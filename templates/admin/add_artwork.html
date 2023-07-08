@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en"> 
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700,800,900,900i%7CPT+Serif:400,700">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body class="form-bg" >
+        <!-- <div class="preloader">
+            <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
+            </div>
+            <p>Loading...</p>
+            </div>
+        </div> -->
+        <div class="container block-lg block-center">
+            <div class="box-booking">
+                <h3 class="text-center mb-2 text-primary">ADD AN ARTWORK</h3>
+                <div class="divider text-center mb-2"></div>
+                <form>
+                    <div class="d-flex my-3 justify-content-around">
+                        <div>
+                            <p class="booking-title">Name</p>
+                            <div class="form-wrap">
+                            <input class="form-input" id="booking-name" type="text" name="name" data-constraints="@Required">
+                            <label class="form-label" for="booking-name">name of artwork</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="booking-title">Price</p>
+                            <div class="form-wrap">
+                            <input class="form-input" id="booking-price" type="text" name="price" data-constraints="@Required @Numeric">
+                            <label class="form-label" for="booking-price">Artwork Price</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="booking-title">Description</p>
+                        <div class="form-wrap">
+                            <textarea class="form-input" name="description" id="booking-description" cols="30" rows="5" data-constraints="@Required"></textarea>
+                            <label class="form-label" for="booking-description">write artwork description here</label>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+
+                    <div class="d-flex my-3 justify-content-around" >
+                        <div>
+                            <p class="booking-title">Artwork Image</p>
+                            <div class="form-wrap">
+                                <input class="form-input" accept="image/jpeg, image/png, image/jpg" id="booking-image" type="file" name="image" onchange="loadFile(event)">
+                                <!-- <label class="form-label" for="booking-image">Upload image</label> -->
+                            </div>
+                        </div>
+
+                        <div class="w-25">
+                            <img id="output" >
+                        </div>
+                    </div>
+
+                    <div class="d-flex my-3 justify-content-around">
+                        <div class="">
+                            <p class="booking-title">Owner</p>
+                            <div class="form-wrap">
+                            <select data-placeholder="Choose artist">
+                                <option label="placeholder"></option>
+                                <option>Hongo Anderson-a1</option>
+                                <option>Mamadou Ballo-a2</option>
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <p class="booking-title">Category</p>
+                            <div class="form-wrap">
+                            <select data-placeholder="Choose category">
+                                <option label="placeholder"></option>
+                                <option>Painting</option>
+                                <option>Prints</option>
+                                <option>Sculpture</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex justify-content-around mt-4">
+                        <div>
+                            <a class="button button-md button-gray-600 text-white" href="index.html"><i class="fa fa-arrow-left mr-2"></i> CANCEL</a>
+                        </div>
+
+                        <div>
+                            <button class="button button-md button-gray-600" >ADD <i class="fa fa-plus ml-2"></i></button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      <!-- Page Footer-->
+     
+
+    <script>
+        let loadFile = function(event) {
+            let image = document.querySelector("#output");
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <script src="../js/core.min.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<section class="bg-default section-tlg">
+    <div class="container block-xl ">
+        {% if error %}
+            <div  class="alert-danger text-center mb-3">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+        <div class="card p-3">
+            <h3 class="text-center mb-2 text-primary">ADD AN ARTWORK</h3>
+            <div class="divider text-center mb-2"></div>
+            <form method="POST" action="{{ url_for('admin.add_artwork') }}" enctype="multipart/form-data">
+                <div class="my-3 container">
+                <div class="row">
+                    <div class="col-lg-3">
+                    <p class="booking-title">Name</p>
+                    <div class="form-wrap">
+                        <input class="form-input" id="booking-name" type="text" name="name" data-constraints="@Required" required>
+                        <label class="form-label" for="booking-name">name of artwork</label>
+                    </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                    <p class="booking-title">Description</p>
+                    <div class="form-wrap">
+                        <textarea class="form-input" name="description" id="description" cols="30" rows="5" data-constraints="@Required" required></textarea>
+                        <label class="form-label" for="description">1st line : Technic - 2nd line : Format - 3rd line : Creation Date</label>
+                    </div>
+                    </div> 
+
+                    <div class="col-lg-3">
+                        <p class="booking-title">Price</p>
+                        <div class="form-wrap">
+                        <input class="form-input" id="booking-price" type="text" name="price" data-constraints="@Required @Numeric" required>
+                        <label class="form-label" for="booking-price">Artwork Price</label>
+                        </div>
+                    </div> 
+                </div>
+                </div>
+                
+                <!-- Image -->
+
+                <div class="my-3 container" >
+
+                    <div class="row">
+                    <div class="col-sm-6 col-xl-6">
+                        <p class="booking-title">Artwork Image</p>
+                        <div class="form-wrap">
+                            <input class="form-input" id="booking-image" type="file" name="image" onchange="loadFile(event)">
+                            <!-- <label class="form-label" for="booking-image">Upload image</label> -->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xl-6 my-2">
+                        <img id="output" class="w-50">
+                    </div>
+                    </div>
+                    
+                </div>
+
+                <div class="d-flex my-3 justify-content-around">
+                    <div class="">
+                        <p class="booking-title">Owner</p>
+                        <div class="form-wrap">
+                            <select name="artist" data-placeholder="Choose artist" required>
+                                <option label="placeholder"></option>
+                                {% for artist in artists %}
+                                    <option value="{{ artist.id }}">{{ artist.lastname + ' ' + artist.firstname}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <p class="booking-title">Category</p>
+                        <div class="form-wrap">
+                        <select name="category" data-placeholder="Choose category" required>
+                            <option label="placeholder"></option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.label.capitalize() }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-around mt-4">
+                    <div>
+                        <a class="button button-md button-danger text-white" href="{{ url_for('admin.main') }}"><span class="fa fa-arrow-left mr-2"></span> CANCEL</a>
+                    </div>
+                    <div>
+                        <button class="button button-md button-gray-600" type="submit" >ADD <span class="fa fa-plus ml-2"></span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </section>
+
+  <script>
+    let loadFile = function(event) {
+        let image = document.querySelector("#output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+  </script>
+{% endblock %}

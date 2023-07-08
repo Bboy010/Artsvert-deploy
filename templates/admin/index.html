@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+
+<section class="bg-default section-lg">
+    <div class="container wow-outer">
+        <div class="text-center wow slideInLeft admin-title">
+            Welcome to admin page, <span class="text-primary">Mr {{ current_admin_name }}</span> 
+        </div>
+
+        <div class="my-4"> </div>
+        <div class="wow fadeInUp">
+            <div class="row justify-content-around">
+                <div class="col-md-4">
+                    <div>
+                        <div class="card-counter primary">
+                        <span class="fa fa-users icon"></span>
+                        <span class="count-numbers">0</span>
+                        <span class="count-name">Clients</span>
+                        </div>
+                    </div>  
+
+                    <div class="d-flex justify-content-center mt-3">
+                        <a href="" class="btn btn-primary btn-lg btn-sm text-center">MANAGE CLIENTS</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div>
+                        <div class="card-counter danger">
+                        <span class="fa fa-user icon"></span>
+                        <span class="count-numbers">{{ artists | length }}</span>
+                        <span class="count-name">Artists</span>
+                        </div>
+                    </div>  
+
+                    <div class="d-flex justify-content-center mt-3">
+                        <a href="{{ url_for('admin.add_artist') }}" class="btn btn-primary btn-lg btn-sm text-center mr-3">ADD AN ARTIST</a>
+                        <a href="{{ url_for('admin.view_artists') }}" class="btn bg-gray-700 btn-lg btn-sm text-center">MANAGE ARTISTS</a>
+                    </div>
+                </div>
+
+                <div class="row mt-3 col-md-12">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div >
+                            <div class="card-counter success">
+                            <span class="fa fa-paint-brush icon"></span>
+                            <span class="count-numbers">{{ artworks | length }}</span>
+                            <span class="count-name">Artworks</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-around mt-3">
+                            <a href="{{ url_for('admin.add_artwork') }}" class="btn btn-primary btn-lg btn-sm text-center ">ADD AN ARTWORK</a>
+                            <a href="{{ url_for('admin.view_artworks') }}" class="btn bg-gray-600 btn-lg btn-sm text-center">MANAGE ARTWORKS</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>           
+            </div>
+                
+        </div>
+    </div>
+</section>
+{% endblock %}

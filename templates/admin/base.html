@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en"> 
+  <head>
+    <title>Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700,800,900,900i%7CPT+Serif:400,700">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}?{{ cache_id }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/fonts.css') }}?{{ cache_id }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}?{{ cache_id }}">
+  </head>
+  <body>
+    <!-- Loading system -->
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="cssload-container">
+          <div class="cssload-speeding-wheel"></div>
+        </div>
+        <p>Loading...</p>
+      </div>
+    </div>
+    <!-- main div  -->
+    <div class="page">
+        <!-- Page Header-->
+        <header class="section page-header">
+            <!-- RD Navbar-->
+            <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+                <div class="rd-navbar-main-outer">
+                <div class="rd-navbar-main">
+                    <!-- RD Navbar Panel-->
+                    <div class="rd-navbar-panel"> 
+                    <!-- RD Navbar Toggle-->
+                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                    <!-- RD Navbar Brand-->
+                    <!-- logo div -->
+                        <div class="rd-navbar-brand"><a href="#"><img class="brand-logo-light" src="images/logo-default1-140x57.png" alt="" width="140" height="57" srcset="images/logo-default-280x113.png 2x"/></a></div>
+                    <!--End logo div -->
+                    </div>
+                    <div class="rd-navbar-main-element">
+                    <div class="rd-navbar-nav-wrap">
+                        <!-- RD Navbar Nav-->
+                        <ul class="rd-navbar-nav">
+                            <li class="rd-nav-item {% if current_page == 'home' %}active{% endif %}"><a class="rd-nav-link" href="{{ url_for('admin.main') }}">Home</a> </li>
+                            <li class="rd-nav-item {% if current_page == 'artworks' %}active{% endif %}"><a class="rd-nav-link" href="{{ url_for('admin.view_artworks') }}">Artworks</a> </li>
+                            <li class="rd-nav-item {% if current_page == 'artists' %}active{% endif %}"><a class="rd-nav-link" href="{{ url_for('admin.view_artists')}}">Artists</a> </li>
+                            <li class="rd-nav-item {% if current_page == 'clients' %}active{% endif %}"><a class="rd-nav-link" href="{{ url_for('admin.view_clients') }}">Clients</a> </li>
+                        </ul> 
+                        <!-- <a class="button button-white button-sm" href="#">book now</a> -->
+                        <a class="button button-white button-sm" href="{{ url_for('admin.logout') }}"> Logout <span class="fa fa-sign-out"></span></a>
+
+                    </div>
+                    </div>
+                    <!-- <a class="button button-white button-sm" href="#">book now</a> -->
+                    <a class="button button-white button-sm" href="{{ url_for('admin.logout') }}">Logout <span class="fa fa-sign-out"></span></a>
+
+                </div>
+                </div>
+            </nav>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+      <script>
+          window.addEventListener('pageshow', function(event) {
+              if (event.persisted) {
+                window.location.reload();
+              }
+          });
+      </script>
+      <script src="{{ url_for('static', filename='scripts/core.min.js') }}?{{ cache_id }}"></script>
+      <script src="{{ url_for('static', filename='scripts/script.js') }}?{{ cache_id }}"></script>
+  </body>
+</html>

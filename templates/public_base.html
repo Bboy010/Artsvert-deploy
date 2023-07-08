@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en"> 
+  <head>
+    <title>ArtsVertHome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700,800,900,900i%7CPT+Serif:400,700">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}?{{ cache_id }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/fonts.css') }}?{{ cache_id }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}?{{ cache_id }}">
+  </head>
+  <body>
+    <!-- Loading system -->
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="cssload-container">
+          <div class="cssload-speeding-wheel"></div>
+        </div>
+        <p>Loading...</p>
+      </div>
+    </div>
+  <!-- main div  -->
+    <div class="page">
+      <!-- Page Header-->
+      <header class="section page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main">
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel"> 
+                  <!-- RD Navbar Toggle-->
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                  <!-- RD Navbar Brand-->
+                  <!-- logo div -->
+                    <!-- <div class="rd-navbar-brand"><a href="{{ url_for('public.index') }}"><img class="brand-logo-light" src="images/logo-default1-140x57.png" alt="" width="140" height="57" srcset="images/logo-default-280x113.png 2x"/></a></div> -->
+                  <!--End logo div -->
+                </div>
+                <div class="rd-navbar-main-element">
+                  <div class="rd-navbar-nav-wrap">
+                    <!-- RD Navbar Nav-->
+                    <ul class="rd-navbar-nav">
+                      <li class="rd-nav-item {% if current_page == 'home' %}active{% endif %}"> <a class="rd-nav-link" href="{{ url_for('public.index')}}">Home</a> </li>
+                      <li class="rd-nav-item {% if current_page == 'painting' %}active{% endif %}"><a class="rd-nav-link" href="{{ url_for('public.each', category = 'painting') }}">Painting</a> </li>
+                      <li class="rd-nav-item {% if current_page == 'print' %}active{% endif %}"><a class="rd-nav-link" href="{{ url_for('public.each', category = 'print') }} ">Prints</a> </li>
+                      <li class="rd-nav-item {% if current_page == 'sculpture' %}active{% endif %}"><a class="rd-nav-link" href="{{ url_for('public.each', category = 'sculpture') }}">Sculpture</a> </li>
+                    </ul> 
+
+                    
+                    <button class="button button-white button-sm" href="#"> <span class="fa fa-shopping-cart mr-2"></span> Cart <span class="badge bg-dark text-white ms-1 rounded-pill">0</span></button>
+                    <a class="button button-white button-sm" href="#"> </span> <span class="fa fa-sign-in mr-2"></span>Login/Signup <span class="fa fa-sign-in ml-2"></span></a>
+                  </div>
+                </div>
+                
+                <button class="button button-white button-sm" href="#"> <span class="fa fa-shopping-cart mr-2"></span> Cart <span class="badge bg-dark text-white ms-1 rounded-pill">0</span></button>
+                <a class="button button-white button-sm" href="#"><span class="fa fa-sign-in mr-2"></span> Login/Signup <span class="fa fa-sign-in ml-2"></span></a>
+
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- End header -->
+      
+      {% block content %}
+      {% endblock %}
+      
+      <!-- Page Footer-->
+      <footer class="section footer-minimal context-dark">
+        <div class="container wow-outer">
+          <div class="wow fadeIn">
+            <div class="row row-60">
+              <div class="col-12 my-3">
+                <a href="index.html">
+                  <!-- <img src="../static/images/logo-default1-140x57.png" alt="" width="140" height="57" srcset="../static/images/logo-default-280x113.png 2x"/> -->
+                </a>
+              </div>
+              <div class="col-12 my-3">
+                <ul class="footer-minimal-nav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Contacts</a></li>
+                  <li><a href="#">Sell on Artsvert</a></li>
+                  <li><a href="#">About</a></li>
+                </ul>
+              </div>
+              <div class="col-12 my-3">
+                <ul class="social-list">
+                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-facebook" href="#"></a></li>
+                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-instagram" href="#"></a></li>
+                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-twitter" href="#"></a></li>
+                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-youtube-play" href="#"></a></li>
+                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-pinterest-p" href="#"></a></li>
+                </ul>
+              </div>
+            </div>
+            <p class="rights"><span>&copy;&nbsp; </span><span class="copyright-year"></span><span>&nbsp;</span><span>Artsvert</span><span>.&nbsp;</span><span>All Rights Reserved.</span><span>&nbsp;</span><a href="#">Privacy Policy</a>.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  <!-- End main div
+    <div class="snackbars" id="form-output-global"></div>
+
+     <script src="../static/scripts/bootstrap.bundle.min.js?{{ cache_id }}"></script> -->
+
+    <script>
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+              window.location.reload();
+            }
+        });
+    </script>
+    <script src="{{ url_for('static', filename='scripts/core.min.js')}}?{{ cache_id }}"></script>
+    <script src="{{ url_for('static', filename='scripts/script.js')}}?{{ cache_id }}"></script>
+  </body>
+</html>

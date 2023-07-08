@@ -1,0 +1,58 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+
+    <section class="bg-default section-lg container">
+        <div class="d-flex">
+            <p class="admin-title-2 mr-3">ARTISTS</p>
+            <a href= "{{ url_for('admin.add_artist') }}" class="admin-title-2 ml-3">ADD AN ARTIST</a>
+        </div>
+    
+      <div class="container wow-outer mt-4" style="margin-top: 10px;  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08); padding: 15px 20px;">
+          <div class="row">
+            <table class="table table-striped p-3 wow slideInRight" >
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Fullname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">See more</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for artist in artists %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>
+                                {{ artist.lastname + ' ' + artist.firstname }}
+                            </td>
+                            <td>
+                                {{ artist.email }}
+                            </td>
+                            <td>
+                                <a href="{{ url_for('admin.view_artist_details', id=artist.id) }}" class="">See more</a>
+                            </td>
+                            <td>
+                                <a href="#" class="">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <!-- <tr>
+                        <th scope="row">1</th>
+                        <td>
+                            DAGO alexamdre
+                        </td>
+                        <td>
+                            150000 FCFA
+                        </td>
+                        <td>
+                            <a href="#" class="">Delete</a>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+          </div>
+      </div>
+    </section>
+  {% endblock %}
