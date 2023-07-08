@@ -140,14 +140,6 @@ def view_artwork_details(id):
     return f"Artist { id }" 
 
 
-# @admin_routes.route('/artworks/<int:id>/edit', methods=['GET', 'POST'])
-# @login_required
-# def edit_artwork(id):
-#     if request.method == 'GET':
-#         artwork = Artwork.query.filter_by(id=id).first()
-#         return render_template('admin/edit_artwork.html', artwork=artwork, categories=Category.query.all(), artists=Artist.query.all())
-
-
 # ------------------- end artwork routes -------------------
 
 
