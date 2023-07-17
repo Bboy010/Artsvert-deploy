@@ -1,5 +1,5 @@
 # Artsvert- Only recycle project limit protfolio project 3weeks 🥇
-<div style="text-align:center;"> <img src="artsvert logo-1.png" /> </div>
+<div style="text-align:center;"> <img src="artsvert logo.png" /> </div>
 ## Artsvert
 : is an online platform that aims to promote recycling and sustainability by providing a virtual gallery where users can showcase and trade recycled or upcycled art and craft items.
 ## role
@@ -38,5 +38,7 @@ The platform is designed to be accessible and user-friendly on various devices, 
 
 
 ### Authors
-[Kouassi](<link href="https://github.com/8srael" />) & [Hongo](<link href="https://github.com/Bboy010" />)
-==Alx-portfolio-project== :accessibility:
+<a href="https://github.com/8srael" >Kouassi</a> & <a href="https://github.com/Bboy010" >Hongo</a>
+
+:accessibility:
+==Alx-portfolio-project== 
