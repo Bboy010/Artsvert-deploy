@@ -1,25 +1,19 @@
-# Artsvert
-Tasks about our project Artvert - the recycle gallery online
+# Artsvert- Only recycle project limit protfolio project 3weeks 🥇
+<div style="text-align:center;"> <img src="artsvert logo.png" /> </div>
+## Artsvert
+: is an online platform that aims to promote recycling and sustainability by providing a virtual gallery where users can showcase and trade recycled or upcycled art and craft items.
+## role
+: The platform will connect artists, designers, and individuals interested in eco-friendly creations, creating a community focused on recycling and creativity.
 
+## Architecture
+<div style="text-align:center;"> <img src="Artverts project.png" /> </div>
 
-0. MVP specification
+## Home page
+<div style="text-align:center;"> <img src="home.png" />
+ </div>
+ 
+4. Data Modelling
 
-
-The Recycle Gallery Online MVP is an online platform that aims to promote recycling and sustainability by providing a virtual gallery where users can showcase and trade recycled or upcycled art and craft items.
-The platform will connect artists, designers, and individuals interested in eco-friendly creations, creating a community focused on recycling and creativity.
-
-1. Rename the document
-
-Artvert recycle art online - promotion of recycling and sustainable art
-
-2. Architecture
-<img src="https://drive.google.com/file/d/1aAnl1K4VSD3DNZ3kdqjuvtDsdIE4Wotu/view?usp=drive_link" />
-
-
-
-3. Data Modelling
-
-<img src="https://drive.google.com/file/d/11wqx7NpP37ICoitJz5X2jwgO2ZJzBAht/view?usp=drive_link" />
 
 Key Features:
 User Registration and Profiles:
@@ -42,10 +36,7 @@ Responsive Design:
 The platform is designed to be accessible and user-friendly on various devices, including desktops, tablets, and mobile phones.
 
 
-4. Mockups
-<img src="https://drive.google.com/file/d/1eXQpeelUMnljYL4_6a0V63bJP95v8fs7/view?usp=drive_link" />
 
 ### Authors
-<link href="https://github.com/8srael" /> Kouassi Israel & <link href="https://github.com/Bboy010" /> Hongo Koffi 
-
-
+[Kouassi](<link href="https://github.com/8srael" />) & [Hongo](<link href="https://github.com/Bboy010" />)
+==Alx-portfolio-project== :accessibility:
