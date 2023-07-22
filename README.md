@@ -13,7 +13,9 @@ Role
 ## Home page
 <div style="text-align:center;"> <img src="home.png" />
  </div>
+ 
  ---
+ 
 ## Architecture 🛩️
 
 1. [routes](src/routes)
