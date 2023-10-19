@@ -27,13 +27,14 @@ class Artist(db.Model):
     tel = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(100), nullable=False)
+    picture_url = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     # relationship One-to-Many (Artist to Artwork) : "One artist can have many artworks"
     artworks = db.relationship('Artwork', backref='artists', lazy=True)
     def __repr__(self):
-        return f"<Artist {self.firstname} {self.lastname} - {self.email}>"
+        return f"<Artist {self.firstname} {self.lastname} - {self.email} - {self.picture_url}>"
 
 class Category(db.Model):
     """ Category model """

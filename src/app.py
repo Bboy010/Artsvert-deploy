@@ -1,9 +1,12 @@
-from flask import Flask
+from flask import Flask, session
 from database import db
 from routes.public import public_routes
 from routes.admin import admin_routes
 from models import Admin
 from flask_login import LoginManager
+from flask_session import Session
+from datetime import timedelta
+from config import SECRET_KEY
 
 app = Flask(__name__)
 
@@ -12,18 +15,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost:3306/artsvert_d
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # session configuration
-app.config['SECRET_KEY'] = 'bboyartsvert'
+app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=22)
 
-# image configuration
-# app.config['UPLOAD_FOLDER'] = 'static/images'
-# app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
-
-# ALLOWED_EXTENSIONS = set(['jpg', 'png', 'jpeg'])
-
-
-# def allowed_file(filename):
-#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+Session(app)
 
 # Link app to db : il permet de lier l'instance de SQLAlchemy à l app Flask
 db.init_app(app)
@@ -40,12 +37,8 @@ def load_user(admin_id):
 # save Blueprints 
 app.register_blueprint(admin_routes)
 app.register_blueprint(public_routes)
-# app.register_blueprint(painting_routes)
-# app.register_blueprint(print_routes)
-# app.register_blueprint(sculpture_routes)
 
 app.app_context().push()
-
 
 if __name__ == '__main__':
     app.run(debug=True)

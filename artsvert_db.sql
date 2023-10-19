@@ -58,6 +58,7 @@ CREATE TABLE `artists` (
   `tel` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL,
+  `picture_url` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -67,9 +68,9 @@ CREATE TABLE `artists` (
 -- Déchargement des données de la table `artists`
 --
 
-INSERT INTO `artists` (`id`, `firstname`, `lastname`, `email`, `tel`, `country`, `city`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'HONGO', 'Anderson', 'hongo@gmail.com', '07-78-46-13-31', 'Ivory Coast', 'Abidjan', 'sha256$XTqdtGogVJi2qCYL$15d9975f03bc0de60950ace02f146643c961839280040416c3c5190f965e7d9e', '2023-07-05 15:56:30', '2023-07-05 15:56:30'),
-(2, 'BALLO', 'Mamadou', 'mamadouballo@gmail.com', '05-45-21-13-11', 'Ivory Coast', 'Bouake', 'sha256$3X8BgKRqgaRUcgYa$d622b8c2bf21c27232750c0885739e1bf3854b49961572223ca5d80cb51a2e6f', '2023-07-05 16:00:17', '2023-07-05 16:00:17');
+INSERT INTO `artists` (`id`, `firstname`, `lastname`, `email`, `tel`, `country`, `city`, `picture_url`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'HONGO', 'Anderson', 'hongo@gmail.com', '07-78-46-13-31', 'Ivory Coast', 'Abidjan', 'static/images/profile_pictures/4.multiply.png','sha256$XTqdtGogVJi2qCYL$15d9975f03bc0de60950ace02f146643c961839280040416c3c5190f965e7d9e', '2023-07-05 15:56:30', '2023-07-05 15:56:30'),
+(2, 'BALLO', 'Mamadou', 'mamadouballo@gmail.com', '05-45-21-13-11', 'Ivory Coast', 'Bouake','static/images/profile_pictures/3.multiply.png', 'sha256$3X8BgKRqgaRUcgYa$d622b8c2bf21c27232750c0885739e1bf3854b49961572223ca5d80cb51a2e6f', '2023-07-05 16:00:17', '2023-07-05 16:00:17');
 
 -- --------------------------------------------------------
 

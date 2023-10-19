@@ -109,9 +109,6 @@ def add_artwork():
     artist_id = request.form.get('artist')
     category = Category.query.filter_by(id=category_id).first()
 
-    print(category)
-    # print(type(os.path.join('../static/images/' + category.label, 'hongo.jpg')))
-
     if request.method == 'POST':
         print(request.files)
         if 'image' not in request.files:
@@ -121,7 +118,6 @@ def add_artwork():
         if file.filename == '':
             return render_template('admin/add_artwork_1.html', error='No selected file')
         
-        file = request.files['image']
         print(file)
         if file and allowed_file(file.filename):
             filename = file.filename
@@ -169,10 +165,19 @@ def add_artist():
         artist = Artist.query.filter_by(email=email).first()
         if artist:
             return render_template('admin/add_artist.html', error='Email address already exists')
-        new_artist = Artist(firstname=firstname.upper(), lastname=lastname, email=email, tel=tel, country=country, city=city, password=generate_password_hash(password, method='sha256'))
-        db.session.add(new_artist)
-        db.session.commit()
-        return redirect(url_for('admin.view_artists'))
+        
+        picture = request.files['picture']
+        if picture.filename == '':
+            return render_template('admin/add_artist.html', error='No selected profile picture')
+        
+        if picture and allowed_file(picture.filename):
+            picture_url = 'static/images/profile_pictures/' + picture.filename
+            picture.save(picture_url)
+            print(picture.filename)
+            new_artist = Artist(firstname=firstname.upper(), lastname=lastname.capitalize(), email=email, tel=tel, country=country, city=city, picture_url=picture_url, password=generate_password_hash(password, method='sha256'))
+            db.session.add(new_artist)
+            db.session.commit()
+            return redirect(url_for('admin.view_artists'))
     return render_template('admin/add_artist.html', cache_id=uuid.uuid4(), current_page=current_page)
 
 @admin_routes.route('/artists/<int:id>/details', methods=['GET', 'POST'])

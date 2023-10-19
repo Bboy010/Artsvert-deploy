@@ -7,9 +7,8 @@
           <div class="col-md-9 col-lg-7 wow-outer">
             <div class="wow slideInDown">
               <!-- <h2>Featured Offers</h2> -->
-              <h2 class="wow slideInDown">Artwork Details</h2>
+              <div class="wow slideInDown admin-title">Artwork Details</div>
               <!-- <p class="text-opacity-80">We offer a great variety of  the best Italian dishes to our visitors and guests. Below are some of our most popular main dishes and desserts.</p> -->
-              <div class="divider mt-3"></div>
             </div>
           </div>
         </div>
@@ -39,7 +38,7 @@
                     <p class="big"> Price : ${{ artwork.price }} </p> 
                 </div>
 
-                <button class="button button-lg button-cart wow fadeInRight" type="submit" >  <span class="fa fa-shopping-cart mr-2"></span> ADD TO CART <span class="fa fa-shopping-cart ml-2"></span></button>
+                <a class="button button-lg button-cart wow fadeInRight" href="{{ url_for('public.add_to_cart', id=artwork.id) }}">  <span class="fa fa-shopping-cart mr-2"></span> ADD TO CART <span class="fa fa-shopping-cart ml-2"></span></a>
               </div>
               </div>
             </div>

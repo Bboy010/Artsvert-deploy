@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en"> 
+  <head>
+    <title>LOGIN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700,800,900,900i%7CPT+Serif:400,700">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  </head>
+  <body class="form-bg" >
+        <div class="preloader">
+            <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
+            </div>
+            <p>Loading...</p>
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="container block-lg block-center">
+                <div class="box-booking">
+                    {% if error %}
+                         <div  class="alert-danger text-center mb-3">
+                            <p>{{ error }}</p>
+                        </div>
+                    {% endif %}
+                    <h4 class="text-center mb-2 text-primary">LOGIN</h4>
+                    <p class="text-center mt-1">Enter your admin informations</p>
+                    <div class="divider text-center my-2"></div>
+                    <form method="POST" action="{{ url_for('admin.login') }}">
+                        <div>
+                            <p class="booking-title ">Email</p>
+                            <div class="form-wrap">
+                            <input class="form-input" id="email" type="email" name="email" data-constraints="@Required">
+                            <label class="form-label" for="email">Your Email</label>
+                            </div>
+                        </div>
+    
+                        <div>
+                            <p class="booking-title mt-3">Password</p>
+                            <div class="form-wrap">
+                            <input class="form-input" id="password" type="password" name="password" data-constraints="@Required">
+                            <label class="form-label" for="password">Your password</label>
+                            </div>
+                        </div>
+    
+                        <div class="d-flex justify-content-around mt-4">
+                            <div>
+                                <button class="button button-md button-gray-600" type="submit" >LOGIN <span class="fa fa-sign-in ml-2"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      <!-- Page Footer-->
+     
+      <script src="{{ url_for('static', filename='scripts/core.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+  </body>
+</html>

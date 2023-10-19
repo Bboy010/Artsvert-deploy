@@ -1,0 +1,62 @@
+{% extends "public_base.html" %}
+
+{% block content %}
+    <section class="section section-xxl bg-default">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                  <div class="container-checkout">
+                    <form action="">
+                      <div class="row-checkout">
+                        <h4 class="col-lg-12 text-center booking-title">Client Informations</h4>
+                        <div class="col-lg-6 my-2">
+                          <label for="fname"><span class="fa fa-user  mr-2"></span>First Name</label>
+                          <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+        
+                          <label for="city"><span class="fa fa-institution mr-2"></span>Street, City</label>
+                          <input type="text" id="city" name="city" placeholder="New York">
+
+                          <label for="phone"><span class="fa fa-phone mr-2"></span>Phone Number</label>
+                          <input type="text" id="phone" name="phone" placeholder="05-46-90-12-13">
+                        </div>
+              
+                        <div class="col-lg-6 my-md-2">
+                            <label for="lname"><span class="fa fa-user  mr-2"></span>Last Name</label>
+                            <input type="text" id="lname" name="lastname" placeholder="John M. Doe" data-constraints="@Required">
+                            <label for="email"><span class="fa fa-envelope mr-2"></span>Email</label>
+                            <input type="text" id="email" name="email" placeholder="john@example.com">
+                        </div>
+              
+                      </div>
+                      <input type="submit" value="Continue to checkout" class="btn-checkout">
+                    </form>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="col-lg-12 my-3">
+                        <div class="container-checkout">
+                            <img src="{{ url_for('static', filename='images/operators.png') }}" alt="">
+                        </div>
+                    </div>
+                  
+                    <div class="col-lg-12 my-3">
+                      <div class="container-checkout">
+                        <h4> Cart
+                          <span class="price" style="color:green">
+                            <span class="fa fa-shopping-cart"></span>
+                            <b>{{ artworks_in_cart|length }}</b>
+                          </span>
+                        </h4>
+                        {% for artwork in artworks_in_cart %} 
+                            <p><a href="#">{{ artwork.name }}</a> <span class="price">${{ artwork.price }}</span></p>
+                        {% endfor %}
+                        <hr>
+                        <p>Total <span class="price" style="color:black"><b>${{ total }}</b></span></p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </section>
+<!-- {% endblock %} -->

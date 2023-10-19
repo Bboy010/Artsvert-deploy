@@ -1,0 +1,68 @@
+{% extends "public_base.html" %}
+
+{% block content %}
+    <section class="section section-xxl bg-default">
+        <div class="container">
+            <div class="row">
+                <div class = "col-md-9 col-lg-7 wow-outer">
+                    <div class="wow slideInDown">
+                        <h2 class="wow slideInDown">🛒 My Shopping Cart 🛒</h2>
+                        <div class="divider mt-3"></div>
+                        <div class="mt-2">
+                            You're added these following artworks in your shopping cart
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if artworks_in_cart|length == 0 %}
+                <p class="row booking-title wow slideInLeft">your shopping cart 🛒 is empty</p>              
+            {% else %}
+                <div class="wow slideInLeft row row-20 row-lg-30">
+                    <table class="table table-striped">
+                        <!-- <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Image</th>
+                                <th scope="col" class="text-center">Name</th>
+                                <th scope="col" class="text-center">Price</th>
+                                <th scope="col" class="text-center">Quantity</th>
+                                <th scope="col" class="text-center">Actions</th>
+                            </tr>
+                        </thead> -->
+                        <tbody>
+                            {% for artwork in artworks_in_cart %}
+                                <tr>
+                                    <td class="align-middle">
+                                        <figure style="text-align: center;">
+                                            <img src="{{ url_for('static', filename=artwork.image_url[6:]) }}" alt="" width="60" height="60"/>
+                                        </figure>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            {{ artwork.name }}
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center"> {{ artwork.price }} $</td>
+                                    <!-- <td class="align-middle text-center">1</td> -->
+                                    <td class="align-middle text-center">
+                                        <a href="{{ url_for('public.remove_from_cart', id=artwork.id) }}">
+                                            <i style="font-style: normal;" class="fas fa-trash fa-2x"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container cart-price-container mt-5 wow slideInRight">
+                    <div class="row d-flex justify-content-between">
+                        <div class="cart-label">Total : {{ total_of_prices }}$</div>
+                        <div class="d-flex justify-content-center justify-content-sm-end align-items-center">
+                            <a href="{{ url_for('public.checkout') }}" class="btn btn-primary btn-md btn-lg">Proceed to checkout</a>
+                        </div>
+                    </div>
+                </div>  
+            {% endif %}
+        </div>
+    </section>
+<!-- {% endblock %} -->

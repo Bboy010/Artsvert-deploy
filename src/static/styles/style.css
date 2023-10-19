@@ -2384,7 +2384,7 @@ img {
 	display: inline-block;
 	font-weight: 400;
 	font-style: normal;
-	speak: none;
+	/* speak: none; */
 	text-transform: none;
 }
 
@@ -3827,6 +3827,13 @@ textarea.form-input {
 .booking-title {
 	font-weight: 400;
 	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.cart-label {
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 22px;
 }
 
 @media (min-width: 576px) {
@@ -4944,7 +4951,7 @@ ul.blog-post-meta li .icon {
 
 @media (min-width: 1200px) {
 	.footer-minimal {
-		padding: 50px 0 50px;
+		padding: 42px 0 42px;
 	}
 	.footer-minimal * + .rights {
 		margin-top: 100px;
@@ -5302,6 +5309,10 @@ h3 + .rd-form {
 
 .row-0 {
 	margin-bottom: 0px;
+}
+
+.row-5 {
+	margin-bottom: -5px;
 }
 
 .row-0:empty {
@@ -9112,10 +9123,10 @@ html.rd-navbar-fixed-linked .page {
 	touch-action: pan-x;
 }
 
-/* Coverflow */
+/* Coverflow 
 .swiper-container-coverflow .swiper-wrapper {
-	/* Windows 8 IE 10 fix */
-}
+	/* Windows 8 IE 10 fix 
+}*/
 
 .swiper-container-fade.swiper-container-free-mode .swiper-slide {
 	transition-timing-function: ease-out;
@@ -10537,7 +10548,7 @@ html.rd-navbar-fixed-linked .page {
 
 .lg-icon {
 	font-family: lg;
-	speak: none;
+	/* speak: none; */
 	font-style: normal;
 	font-weight: 400;
 	font-variant: normal;
@@ -11614,7 +11625,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 
 .lg-icon {
 	font-family: lg;
-	speak: none;
+	/* speak: none; */
 	font-style: normal;
 	font-weight: 400;
 	font-variant: normal;
@@ -13798,3 +13809,102 @@ html .dtp .invisible {
 	box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
 	border: solid 1px transparent;
 }
+
+/* cart style */
+
+.cart-price-container {
+    background-color: #343a40;
+    border-radius: 0 0 4px 4px;
+    color: #fff;
+    opacity: .93;
+    padding: 4em 4em;
+}
+
+/* checkout style */
+
+.row-checkout {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	-ms-flex-wrap: wrap; /* IE10 */
+	flex-wrap: wrap;
+	margin: 0 -16px;
+  }
+  
+  .col-25 {
+	-ms-flex: 25%; /* IE10 */
+	flex: 25%;
+  }
+  
+  .col-50 {
+	-ms-flex: 50%; /* IE10 */
+	flex: 50%;
+  }
+  
+  .col-75 {
+	-ms-flex: 75%; /* IE10 */
+	flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+	padding: 0 16px;
+  }
+  
+  .container-checkout {
+	background-color: #f2f2f2;
+	padding: 5px 20px 15px 20px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+  }
+  
+  input[type=text] {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+  }
+  
+  label {
+	margin-bottom: 10px;
+	display: block;
+  }
+  
+  .icon-container {
+	margin-bottom: 20px;
+	padding: 7px 0;
+	font-size: 24px;
+  }
+  
+  .btn-checkout {
+	background-color: #04AA6D;
+	color: white;
+	padding: 12px;
+	margin: 10px 0;
+	border: none;
+	width: 100%;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 17px;
+  }
+  
+  .btn-checkout:hover {
+	background-color: #45a049;
+  }
+  
+  span.price {
+	float: right;
+	color: grey;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+	.row {
+	  flex-direction: column-reverse;
+	}
+	.col-25 {
+	  margin-bottom: 20px;
+	}
+  }
+
