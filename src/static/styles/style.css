@@ -395,6 +395,12 @@ p [style*='max-width'] {
 	text-transform: uppercase;
 }
 
+.title-style {
+	color: #000000;
+	text-transform: uppercase;
+	font-size: 27px;
+}
+
 .title-style-1 + h2 {
 	margin-top: 20px;
 }
@@ -4929,7 +4935,7 @@ ul.blog-post-meta li .icon {
 }
 
 .footer-minimal {
-	padding: 30px 0;
+	padding: 40px 0;
 	text-align: center;
 	background: #323232;
 }
@@ -5486,7 +5492,7 @@ h3 + .group-xl {
 	padding: 50px 0;
 }
 
-.section-xxl {
+.section-xxl, .section-xxl-2, .section-xxl-3 {
 	padding: 80px 0;
 }
 
@@ -5534,8 +5540,8 @@ html [class*='section-'].section-bottom-0 {
 	.section-xl {
 		padding: 100px 0;
 	}
-	.section-xxl {
-		padding: 110px 0;
+	.section-xxl, .section-xxl-2, .section-xxl-3 {
+		padding: 150px 0;
 	}
 }
 
@@ -5549,20 +5555,28 @@ html [class*='section-'].section-bottom-0 {
 	.section-xl {
 		padding: 115px 0;
 	}
-	.section-xxl {
+	.section-xxl, .section-xxl-2, .section-xxl-3 {
 		padding: 145px 0;
 	}
 }
 
 @media (min-width: 1200px) {
 	.section-lg {
-		padding: 130px 0;
+		padding: 110px 0;
 	}
 	.section-xl {
 		padding: 135px 0;
 	}
 	.section-xxl {
 		padding: 175px 0;
+	}
+
+	.section-xxl-2 {
+		padding: 175px 0 300px 0;
+	}
+
+	.section-xxl-3 {
+		padding: 175px 0 410px 0;
 	}
 }
 
@@ -13830,54 +13844,40 @@ html .dtp .invisible {
 	margin: 0 -16px;
   }
   
-  .col-25 {
-	-ms-flex: 25%; /* IE10 */
-	flex: 25%;
-  }
-  
-  .col-50 {
-	-ms-flex: 50%; /* IE10 */
-	flex: 50%;
-  }
-  
-  .col-75 {
-	-ms-flex: 75%; /* IE10 */
-	flex: 75%;
-  }
-  
-  .col-25,
-  .col-50,
-  .col-75 {
-	padding: 0 16px;
-  }
-  
-  .container-checkout {
+.container-checkout {
 	background-color: #f2f2f2;
 	padding: 5px 20px 15px 20px;
 	border: 1px solid lightgrey;
 	border-radius: 3px;
-  }
-  
-  input[type=text] {
+}
+
+.container-checkout-2 {
+	background-color: #f2f2f2;
+	padding: 5px 2px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+}
+
+input[type=text] {
 	width: 100%;
 	margin-bottom: 20px;
 	padding: 12px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
-  }
-  
-  label {
+}
+
+label {
 	margin-bottom: 10px;
 	display: block;
-  }
-  
-  .icon-container {
+}
+
+.icon-container {
 	margin-bottom: 20px;
 	padding: 7px 0;
 	font-size: 24px;
-  }
+}
   
-  .btn-checkout {
+.btn-checkout {
 	background-color: #04AA6D;
 	color: white;
 	padding: 12px;
@@ -13887,24 +13887,14 @@ html .dtp .invisible {
 	border-radius: 3px;
 	cursor: pointer;
 	font-size: 17px;
-  }
+}
   
-  .btn-checkout:hover {
+.btn-checkout:hover {
 	background-color: #45a049;
-  }
+}
   
-  span.price {
+span.price {
 	float: right;
 	color: grey;
-  }
-  
-  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
-  @media (max-width: 800px) {
-	.row {
-	  flex-direction: column-reverse;
-	}
-	.col-25 {
-	  margin-bottom: 20px;
-	}
-  }
+}
 

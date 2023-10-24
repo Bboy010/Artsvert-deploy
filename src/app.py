@@ -7,6 +7,7 @@ from flask_login import LoginManager
 from flask_session import Session
 from datetime import timedelta
 from config import SECRET_KEY
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
@@ -21,6 +22,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=22)
 
 Session(app)
+migrate = Migrate(app, db)
 
 # Link app to db : il permet de lier l'instance de SQLAlchemy à l app Flask
 db.init_app(app)

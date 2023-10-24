@@ -4,7 +4,7 @@
 
 from flask import render_template, request, redirect, url_for, Blueprint, abort
 from database import db
-from models import Artwork
+from models import Artwork, Client
 import uuid
 import random
 from flask import session
@@ -53,6 +53,9 @@ def each(category):
 @public_routes.route('<category>/<int:id>/details')
 def details(category, id):
     """ route for each artwork details """
+    if category not in ['painting', 'print', 'sculpture']:
+        abort(404)
+
     current_page = category
     artwork = Artwork.query.filter_by(id=id).first()
     similar_artworks = Artwork.query.filter_by(category_id=artwork.categories.id).limit(4).all()
@@ -124,3 +127,43 @@ def checkout():
         artworks_in_cart = []
     print(total, artworks_in_cart)
     return render_template('checkout.html', cache_id=uuid.uuid4(), artworks_in_cart=artworks_in_cart, total=total)
+
+
+@public_routes.route('/cart/checkout/confirm', methods=['GET', 'POST'])
+def confirm_checkout():
+    """ route for the confirmation page """
+    if request.method == 'POST':
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        email = request.form.get('email')
+        tel = request.form.get('phone')
+        address = request.form.get('address')
+        total = 0        
+        if 'cart' in session:
+            ids = session['cart']
+            artworks_in_cart = [Artwork.query.filter_by(id=id).first() for id in ids]
+            for artwork in artworks_in_cart:
+                total += artwork.price
+        
+        if firstname == '' or lastname == '' or email == '' or tel == '' or address == '':
+            return render_template('checkout.html', cache_id=uuid.uuid4(), error='Please fill all the fields',artworks_in_cart=artworks_in_cart, total=total)
+
+        if Client.query.filter_by(email=email).first():
+            return render_template('checkout.html', cache_id=uuid.uuid4(), error='This email is already used',artworks_in_cart=artworks_in_cart, total=total)
+        
+        client = Client(firstname=firstname.capitalize(), lastname=lastname.capitalize(), email=email, tel=tel, address=address)
+        print(client)
+        db.session.add(client)
+        db.session.commit()
+        for artwork in artworks_in_cart:
+            client.cart_of_artworks.append(artwork)
+        db.session.commit()
+
+        artworks = [Artwork.query.filter_by(id=id).first() for id in ids]
+        session['cart'] = []
+
+
+        return render_template('confirmation.html', cache_id=uuid.uuid4(), total=total,client=client, artworks_in_cart=session['cart'], artworks=artworks)
+    return render_template('confirmation.html')
+
+

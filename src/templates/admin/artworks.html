@@ -22,7 +22,7 @@
 
         <div class="container wow-outer mt-4">
             <div class="d-flex">
-                <p class="admin-title-2 mr-3">List of all Artworks</p>
+                <p class="admin-title-2 mr-3">Artworks</p>
                 <a href="{{ url_for('admin.add_artwork') }}" class="admin-title-2 ml-3">ADD AN ARTWORK</a>
             </div>
 
@@ -35,7 +35,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Category</th>
                             <th scope="col">See more</th>
-                            <th scope="col">Update</th>
+                            <!-- <th scope="col">Update</th> -->
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
@@ -55,9 +55,9 @@
                                 <td>
                                     <a href="{{ url_for('admin.view_artwork_details', id=artwork.id) }}" class="">See more</a>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <a href="#" class="">Update</a>
-                                </td>
+                                </td> -->
                                 <td>
                                     <a href="#" class="">Delete</a>
                                 </td>

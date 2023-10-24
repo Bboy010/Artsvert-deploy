@@ -15,13 +15,13 @@
                     <div>
                         <div class="card-counter primary">
                         <span class="fa fa-users icon"></span>
-                        <span class="count-numbers">0</span>
+                        <span class="count-numbers">{{ clients | length }}</span>
                         <span class="count-name">Clients</span>
                         </div>
                     </div>  
 
                     <div class="d-flex justify-content-center mt-3">
-                        <a href="" class="btn btn-primary btn-lg btn-sm text-center">MANAGE CLIENTS</a>
+                        <a href="{{ url_for('admin.view_clients') }}" class="btn btn-primary btn-lg btn-sm text-center">MANAGE CLIENTS</a>
                     </div>
                 </div>
                 

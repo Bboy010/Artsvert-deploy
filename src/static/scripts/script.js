@@ -1,5 +1,24 @@
 "use strict";
 (function () {
+	//modal
+	$(document).ready(function () {
+		$(this).on('click', '#link', function () {
+		  console.log('Gospel');
+		  let url = $(this).data('url');
+		  console.log(url);
+		  $.get(url, function (data) {
+			  console.log(data);
+			  $('#firstname').text(data.firstname);
+			  $('#lastname').text(data.lastname);
+			  $('#email').text(data.email);
+			  $('#tel').text(data.tel);
+			  $('#country').text(data.country);
+			  $('#city').text(data.city);
+			  $('#count').text(data.count);
+			  $('#picture').attr('src', data['picture_url']);
+		  });
+		});
+	  });
 	// Global variables
 	var userAgent = navigator.userAgent.toLowerCase(),
 		initialDate = new Date(),

@@ -12,12 +12,26 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Fullname</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Delete</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">See more</th>
                     </tr>
                 </thead>
                 <tbody>
+                  {% for client in clients %}
+                  <tr>
+                      <th scope="row">{{ loop.index }}</th>
+                      <td>
+                          {{ client.firstname }}
+                      </td>
+                      <td>
+                          {{ client.lastname }}
+                      </td>
+                      <td>
+                          <a href="javascript:void(0)" data-toggle="modal" data-target="#profileModal", id="link" data-url="#">See more</a>
+                      </td>
+                  </tr>
+              {% endfor %}
                 </tbody>
             </table>
           </div>

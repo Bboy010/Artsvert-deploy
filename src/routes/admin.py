@@ -2,10 +2,10 @@
     file that contains all the routes for the admin panel
 """
 
-from flask import render_template, request, redirect, url_for, Blueprint
+from flask import render_template, request, redirect, url_for, Blueprint, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import db
-from models import Admin, Category, Artwork, Artist
+from models import Admin, Category, Artwork, Artist, Client
 import uuid
 import os
 from flask_login import login_user, login_required, logout_user, current_user
@@ -81,7 +81,8 @@ def main():
     print(f"Current admin name : {current_user.name}")
     artists = Artist.query.all()
     artworks = Artwork.query.all()
-    return render_template('admin/index.html', cache_id=cache_id, current_page=current_page, current_admin_name=current_user.name, artists=artists, artworks=artworks)
+    clients = Client.query.all()
+    return render_template('admin/index.html', cache_id=cache_id, current_page=current_page, current_admin_name=current_user.name, artists=artists, artworks=artworks, clients=clients)
 
 # ------------------- end main routes -------------------
 
@@ -133,7 +134,7 @@ def add_artwork():
 @admin_routes.route('/artworks/<int:id>/details', methods=['GET', 'POST'])
 @login_required
 def view_artwork_details(id):
-    return f"Artist { id }" 
+    return f"Artwork { id }" 
 
 
 # ------------------- end artwork routes -------------------
@@ -180,10 +181,22 @@ def add_artist():
             return redirect(url_for('admin.view_artists'))
     return render_template('admin/add_artist.html', cache_id=uuid.uuid4(), current_page=current_page)
 
-@admin_routes.route('/artists/<int:id>/details', methods=['GET', 'POST'])
+@admin_routes.route('/artists/<int:id>/details')
 @login_required
 def view_artist_details(id):
-    return f"Artist { id }" 
+    """ route for the artist details"""
+    artist = Artist.query.filter_by(id=id).first()
+    return jsonify({
+            'firstname': artist.firstname,
+            'lastname': artist.lastname,
+            'email': artist.email,
+            'tel': artist.tel,
+            'country': artist.country,
+            'city': artist.city,
+            'picture_url': url_for('static', filename='images/profile_pictures/' + artist.picture_url.split('/')[-1]),
+            'count': len(artist.artworks)
+        }
+)
 # ------------------- end artist routes -------------------
 
 
@@ -192,6 +205,8 @@ def view_artist_details(id):
 @login_required
 def view_clients():
     current_page = 'clients'
-    return render_template('admin/clients.html', current_page=current_page)
+    clients = Client.query.all()
+    print(clients)
+    return render_template('admin/clients.html', current_page=current_page, clients=clients)
 
 # ------------------- end client routes -------------------
